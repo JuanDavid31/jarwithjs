@@ -11,7 +11,8 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # Node.js
-src/main/webapp/node_modules
+node_modules/
+src/main/webapp/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
