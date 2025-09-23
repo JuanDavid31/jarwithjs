@@ -105,6 +105,79 @@
             <artifactId>angularjs</artifactId>
             <version>1.8.3</version> <!-- Latest stable AngularJS 1.x -->
         </dependency>
+
+        <!-- ⚠️ VULNERABLE DEPENDENCIES FOR TESTING PURPOSES ONLY ⚠️ -->
+        <!-- DO NOT USE IN PRODUCTION - TESTING/EDUCATIONAL USE ONLY -->
+        
+        <!-- Apache Commons Collections - CVE-2015-6420 (Remote Code Execution) -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version> <!-- Vulnerable to deserialization attacks -->
+        </dependency>
+        
+        <!-- Log4j - CVE-2021-44228 (Log4Shell - Remote Code Execution) -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.14.1</version> <!-- Vulnerable to JNDI injection -->
+        </dependency>
+        
+        <!-- Jackson Databind - CVE-2020-25649 (Deserialization vulnerability) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.10.3</version> <!-- Multiple deserialization CVEs -->
+        </dependency>
+        
+        <!-- Spring Framework - CVE-2022-22965 (Spring4Shell - Remote Code Execution) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.3.17</version> <!-- Vulnerable to RCE via data binding -->
+        </dependency>
+        
+        <!-- Apache Struts - CVE-2017-5638 (Remote Code Execution) -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.32</version> <!-- Jakarta Multipart parser RCE -->
+        </dependency>
+        
+        <!-- Netty - CVE-2021-21290 (Information Disclosure) -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-http</artifactId>
+            <version>4.1.59.Final</version> <!-- HTTP request smuggling -->
+        </dependency>
+        
+        <!-- Apache HttpClient - CVE-2020-13956 (SSRF) -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.12</version> <!-- Server-Side Request Forgery -->
+        </dependency>
+        
+        <!-- Bouncy Castle - CVE-2020-15522 (Timing attack) -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.65</version> <!-- DSA signature timing attack -->
+        </dependency>
+        
+        <!-- Hibernate Validator - CVE-2020-10693 (XML External Entity) -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.4.Final</version> <!-- XXE vulnerability -->
+        </dependency>
+        
+        <!-- MySQL Connector - CVE-2021-2471 (Deserialization) -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.25</version> <!-- Deserialization vulnerability -->
+        </dependency>
     </dependencies>
 
     <build>
