@@ -54,6 +54,50 @@
             <artifactId>guava</artifactId>
             <version>30.0-jre</version>
         </dependency>
+
+        <!-- GraalVM JavaScript Engine for Server-Side JS Execution -->
+        <dependency>
+            <groupId>org.graalvm.js</groupId>
+            <artifactId>js</artifactId>
+            <version>23.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.js</groupId>
+            <artifactId>js-scriptengine</artifactId>
+            <version>23.0.1</version>
+        </dependency>
+
+        <!-- JSON Processing for JS-Java interaction -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- WebSocket Support for Real-time JS Communication -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <!-- WebJAR dependencies - JavaScript libraries as Maven artifacts -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.6.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>5.1.3</version>
+        </dependency>
+        
+        <!-- WebJAR Lodash - Using secure version (4.17.4 was quarantined!) -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>lodash</artifactId>
+            <version>4.17.21</version> <!-- Secure version -->
+        </dependency>
     </dependencies>
 
     <build>
