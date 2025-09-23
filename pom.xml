@@ -98,6 +98,13 @@
             <artifactId>lodash</artifactId>
             <version>4.17.21</version> <!-- Secure version -->
         </dependency>
+        
+        <!-- WebJAR AngularJS - Classic JavaScript framework -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angularjs</artifactId>
+            <version>1.8.3</version> <!-- Latest stable AngularJS 1.x -->
+        </dependency>
     </dependencies>
 
     <build>

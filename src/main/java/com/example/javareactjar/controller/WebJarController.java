@@ -95,9 +95,23 @@ public class WebJarController {
         lodash.put("securityNote", "Using secure version 4.17.21 - version 4.17.4 was quarantined by Sonatype!");
         lodash.put("cdnPath", "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js");
         
+        // AngularJS information
+        Map<String, Object> angularjs = new HashMap<>();
+        angularjs.put("name", "AngularJS");
+        angularjs.put("version", "1.8.3");
+        angularjs.put("description", "The original AngularJS framework - HTML enhanced for web apps!");
+        angularjs.put("mainFile", "/webjars/angularjs/1.8.3/angular.min.js");
+        angularjs.put("additionalModules", Map.of(
+            "animate", "/webjars/angularjs/1.8.3/angular-animate.min.js",
+            "route", "/webjars/angularjs/1.8.3/angular-route.min.js",
+            "resource", "/webjars/angularjs/1.8.3/angular-resource.min.js"
+        ));
+        angularjs.put("cdnPath", "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js");
+        
         webjarInfo.put("jquery", jquery);
         webjarInfo.put("bootstrap", bootstrap);
         webjarInfo.put("lodash", lodash);
+        webjarInfo.put("angularjs", angularjs);
         
         Map<String, Object> response = new HashMap<>();
         response.put("success", true);
@@ -121,6 +135,14 @@ public class WebJarController {
     }
 
     /**
+     * AngularJS specific demo page
+     */
+    @GetMapping("/angularjs-demo")
+    public String angularjsDemo() {
+        return "angularjs-demo"; // Returns angularjs-demo.html template
+    }
+
+    /**
      * Get WebJAR file sizes and metadata
      */
     @GetMapping("/stats")
@@ -133,7 +155,8 @@ public class WebJarController {
             "META-INF/resources/webjars/jquery/3.6.0/jquery.min.js",
             "META-INF/resources/webjars/bootstrap/5.1.3/css/bootstrap.min.css",
             "META-INF/resources/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js",
-            "META-INF/resources/webjars/lodash/4.17.21/lodash.min.js"
+            "META-INF/resources/webjars/lodash/4.17.21/lodash.min.js",
+            "META-INF/resources/webjars/angularjs/1.8.3/angular.min.js"
         };
         
         Map<String, Object> fileStats = new HashMap<>();
@@ -166,7 +189,7 @@ public class WebJarController {
             }
         }
         
-        stats.put("totalLibraries", 3);
+        stats.put("totalLibraries", 4);
         stats.put("totalSize", totalSize);
         stats.put("totalSizeFormatted", formatBytes(totalSize));
         stats.put("files", fileStats);
