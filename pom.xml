@@ -189,6 +189,74 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.25</version> <!-- Deserialization vulnerability -->
         </dependency>
+        
+        <!-- Javassist - CVE-2019-20445 (Code injection via deserialization) -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.20.0-GA</version> <!-- Remote code execution via ClassPool -->
+        </dependency>
+
+        <!-- ADDITIONAL VULNERABLE DEPENDENCIES - BATCH 2 -->
+        
+        <!-- Apache Commons BeanUtils - CVE-2019-10086 (ClassLoader manipulation) -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version> <!-- Property access bypass -->
+        </dependency>
+        
+        <!-- Apache Shiro - CVE-2020-1957 (Authentication bypass) -->
+        <!-- REMOVED: QUARANTINED by Sonatype - Authentication bypass vulnerability -->
+        
+        <!-- Apache Commons Codec - CVE-2012-5783 (Information exposure) -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.13</version> <!-- Base64 padding oracle attack -->
+        </dependency>
+        
+        <!-- Apache POI - CVE-2019-12415 (XML External Entity) -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.0</version> <!-- XXE in Office documents -->
+        </dependency>
+        
+        <!-- OkHttp - CVE-2021-0341 (Certificate validation bypass) -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.14.7</version> <!-- TLS validation issues -->
+        </dependency>
+        
+        <!-- Apache Velocity - CVE-2020-13936 (Remote Code Execution) -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.2</version> <!-- Template injection RCE -->
+        </dependency>
+        
+        <!-- Apache Xerces - CVE-2020-14621 (XXE via XInclude) -->
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.12.0</version> <!-- XML parsing vulnerabilities -->
+        </dependency>
+        
+        <!-- Jetty - CVE-2020-27216 (Information disclosure) -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.4.26.v20200117</version> <!-- Request smuggling -->
+        </dependency>
+        
+        <!-- Apache Ant - CVE-2020-11979 (Path traversal) -->
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.10.7</version> <!-- Zip slip vulnerability -->
+        </dependency>
     </dependencies>
 
     <build>
