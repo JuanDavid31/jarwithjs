@@ -10,8 +10,8 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Java React JAR</name>
-    <description>Java application with embedded React frontend</description>
+    <name>WebJAR Collection</name>
+    <description>Java application with WebJAR JavaScript libraries only</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -25,58 +25,13 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <node.version>v16.20.2</node.version>
-        <npm.version>8.19.4</npm.version>
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starter Web -->
+        <!-- Minimal Spring Boot Starter for WebJAR serving -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!-- Spring Boot Starter Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- For serving static content -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>30.0-jre</version>
-        </dependency>
-
-        <!-- GraalVM JavaScript Engine for Server-Side JS Execution -->
-        <dependency>
-            <groupId>org.graalvm.js</groupId>
-            <artifactId>js</artifactId>
-            <version>23.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.graalvm.js</groupId>
-            <artifactId>js-scriptengine</artifactId>
-            <version>23.0.1</version>
-        </dependency>
-
-        <!-- JSON Processing for JS-Java interaction -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <!-- WebSocket Support for Real-time JS Communication -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
         <!-- WebJAR dependencies - JavaScript libraries as Maven artifacts -->
@@ -105,158 +60,6 @@
             <artifactId>angularjs</artifactId>
             <version>1.8.3</version> <!-- Latest stable AngularJS 1.x -->
         </dependency>
-
-        <!-- ⚠️ VULNERABLE DEPENDENCIES FOR TESTING PURPOSES ONLY ⚠️ -->
-        <!-- DO NOT USE IN PRODUCTION - TESTING/EDUCATIONAL USE ONLY -->
-        
-        <!-- Apache Commons Collections - CVE-2015-6420 (Remote Code Execution) -->
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version> <!-- Vulnerable to deserialization attacks -->
-        </dependency>
-        
-        <!-- Log4j - CVE-2021-44228 (Log4Shell - Remote Code Execution) -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.14.1</version> <!-- Vulnerable to JNDI injection -->
-        </dependency>
-        
-        <!-- Jackson Databind - CVE-2020-25649 (Deserialization vulnerability) -->
-        <!-- REMOVED: Duplicate dependency - Spring Boot manages Jackson version -->
-        
-        <!-- Spring Framework - CVE-2022-22965 (Spring4Shell - Remote Code Execution) -->
-        <!-- REMOVED: QUARANTINED by Sonatype - Spring Boot manages Spring version -->
-        
-        <!-- Apache Struts - CVE-2017-5638 (Remote Code Execution) -->
-        <!-- REMOVED: QUARANTINED by Sonatype - Extremely dangerous RCE vulnerability -->
-        
-        <!-- REPLACEMENT VULNERABLE DEPENDENCIES (alternatives to quarantined ones) -->
-        
-        <!-- Older Jackson with vulnerabilities - CVE-2020-8840 (XXE) -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.10.0</version> <!-- Vulnerable to XXE attacks -->
-        </dependency>
-        
-        <!-- Apache Tomcat Jasper - CVE-2019-0199 (HTTP/2 DoS) -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jasper</artifactId>
-            <version>9.0.17</version> <!-- Vulnerable to DoS attacks -->
-        </dependency>
-        
-        <!-- H2 Database - CVE-2021-42392 (Remote Code Execution) -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.199</version> <!-- JNDI injection vulnerability -->
-        </dependency>
-        
-        <!-- Netty - CVE-2021-21290 (Information Disclosure) -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-codec-http</artifactId>
-            <version>4.1.59.Final</version> <!-- HTTP request smuggling -->
-        </dependency>
-        
-        <!-- Apache HttpClient - CVE-2020-13956 (SSRF) -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.12</version> <!-- Server-Side Request Forgery -->
-        </dependency>
-        
-        <!-- Bouncy Castle - CVE-2020-15522 (Timing attack) -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.65</version> <!-- DSA signature timing attack -->
-        </dependency>
-        
-        <!-- Hibernate Validator - CVE-2020-10693 (XML External Entity) -->
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.1.4.Final</version> <!-- XXE vulnerability -->
-        </dependency>
-        
-        <!-- MySQL Connector - CVE-2021-2471 (Deserialization) -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.25</version> <!-- Deserialization vulnerability -->
-        </dependency>
-        
-        <!-- Javassist - CVE-2019-20445 (Code injection via deserialization) -->
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.20.0-GA</version> <!-- Remote code execution via ClassPool -->
-        </dependency>
-
-        <!-- ADDITIONAL VULNERABLE DEPENDENCIES - BATCH 2 -->
-        
-        <!-- Apache Commons BeanUtils - CVE-2019-10086 (ClassLoader manipulation) -->
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.3</version> <!-- Property access bypass -->
-        </dependency>
-        
-        <!-- Apache Shiro - CVE-2020-1957 (Authentication bypass) -->
-        <!-- REMOVED: QUARANTINED by Sonatype - Authentication bypass vulnerability -->
-        
-        <!-- Apache Commons Codec - CVE-2012-5783 (Information exposure) -->
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.13</version> <!-- Base64 padding oracle attack -->
-        </dependency>
-        
-        <!-- Apache POI - CVE-2019-12415 (XML External Entity) -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.1.0</version> <!-- XXE in Office documents -->
-        </dependency>
-        
-        <!-- OkHttp - CVE-2021-0341 (Certificate validation bypass) -->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.14.7</version> <!-- TLS validation issues -->
-        </dependency>
-        
-        <!-- Apache Velocity - CVE-2020-13936 (Remote Code Execution) -->
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-            <version>2.2</version> <!-- Template injection RCE -->
-        </dependency>
-        
-        <!-- Apache Xerces - CVE-2020-14621 (XXE via XInclude) -->
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-            <version>2.12.0</version> <!-- XML parsing vulnerabilities -->
-        </dependency>
-        
-        <!-- Jetty - CVE-2020-27216 (Information disclosure) -->
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>9.4.26.v20200117</version> <!-- Request smuggling -->
-        </dependency>
-        
-        <!-- Apache Ant - CVE-2020-11979 (Path traversal) -->
-        <dependency>
-            <groupId>org.apache.ant</groupId>
-            <artifactId>ant</artifactId>
-            <version>1.10.7</version> <!-- Zip slip vulnerability -->
-        </dependency>
     </dependencies>
 
     <build>
@@ -268,76 +71,6 @@
                 <configuration>
                     <executable>true</executable>
                 </configuration>
-            </plugin>
-
-            <!-- Frontend Maven Plugin for Node.js and npm -->
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.12.1</version>
-                <configuration>
-                    <workingDirectory>src/main/webapp</workingDirectory>
-                </configuration>
-                <executions>
-                    <!-- Install Node.js and npm -->
-                    <execution>
-                        <id>install node and npm</id>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                        <configuration>
-                            <nodeVersion>${node.version}</nodeVersion>
-                            <npmVersion>${npm.version}</npmVersion>
-                        </configuration>
-                    </execution>
-
-                    <!-- npm install -->
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-
-                    <!-- npm run build -->
-                    <execution>
-                        <id>npm run build</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run build</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Copy React build to static resources -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-react-build</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/webapp/build</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
